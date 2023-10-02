@@ -1,0 +1,36 @@
+<h2>Edit Phone Number</h2>
+<%= form_for @citizen, url: citizen_path(@citizen), method: :patch do |f| %>
+    <div class="field">
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+    </div>
+    <br/>
+    <div class="field">
+        <%= f.label :device_id %>
+        <%= f.collection_select :device_id, @devices, :id, :name %>
+    </div>
+    <br/>
+    <div class="field">
+        <%= f.label :intercom_uuid %>
+        <%= f.text_field :intercom_uuid %>
+    </div>
+    <br/>
+    <br/>
+    <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+    </div>
+    <br/>
+    <div>
+        <%= f.submit "Save" %>
+    </div>
+<% end %>
+
+<% if flash[:notice] %>
+    <br/>
+    <div class="notice"><%= flash[:notice] %></div>  
+<% end %>
+
+<% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+<% end %>

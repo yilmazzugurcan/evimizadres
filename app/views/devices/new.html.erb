@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" >Evimiz İnterkom'a Adres ve Telefon Ekleme</a>
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item <%= 'active' if current_page?(new_citizen_path) %>">
+        <%= link_to 'İnterkom Telefon Numarası Kaydet', new_citizen_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item <%= 'active' if current_page?(new_device_path) %>">
+        <%= link_to 'İnterkom Adres Ekle', new_device_path, class: 'nav-link' %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<%= form_with url: devices_path, method: :post do |f| %>
+<br/>
+  <div>
+  <%= f.label :Cihaz_Tipi %>
+  <%= f.text_field :device_type, value: "intercom", readonly: true %>
+</div>
+<br/>
+  <div>
+    <%= f.label :Cihaz_UUID %>
+    <%= f.text_field :identifier %>
+  </div>
+<br/>
+  <div>
+    <%= f.label :İl_Adı %>
+    <%= f.text_field :region_name %>
+  </div>
+<br/>
+  <div>
+    <%= f.label :İlçe_Adı %>
+    <%= f.text_field :city_name %>
+  </div>
+<br/>
+  <div>
+    <%= f.label :Mahalle_Adı %> 
+    <%= f.text_field :district_name %>
+  </div>
+<br/>
+  <div>
+    <%= f.label :Sokak_Adı %>
+    <%= f.text_field :street_name %>
+  </div>
+<br/>
+  <div>
+    <%= f.label :Giriş_Numarası %>
+    <%= f.number_field :entry_num %>
+  </div>
+<br/>
+  <div>
+    <%= f.label :Ev_Numarası %>
+    <%= f.number_field :house_num %>
+  </div>
+<br/>
+  <div>
+    <%= f.submit "Kaydet" %>
+  </div>
+<br/>
+
+
+<!-- hata kodu döndürme -->
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>  
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+
+<% end %>
+
+

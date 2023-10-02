@@ -1,0 +1,62 @@
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    h1 {
+        text-align: center; 
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0062cc;
+    }
+</style>
+
+<h1>Evimiz</h1>
+
+<%= form_with(url: login_path, method: :post) do |f| %>
+    <div>
+        <%= f.label :username, 'Kullanıcı Adı' %>
+        <%= f.text_field :username %>
+    </div>
+    <div>
+        <%= f.label :password, 'Şifre' %>
+        <%= f.password_field :password %>
+    </div>
+    <div>
+        <%= f.submit 'Giriş Yap' %>
+    </div>
+<% end %>
